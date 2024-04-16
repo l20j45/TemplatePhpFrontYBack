@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mali &amp; Ricardo | Te invitamos a celebrar nuestra boda!!!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Roboto:ital,wght@0,400;0,500;0,900;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"
+      async
+      defer
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
+    <script src="./build/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="build/css/app.css" />
+  </head>
+  <body>
+    <main class="">
+      <div
+        class="audio-button-1"
+        id="audio-button-1"
+        style="background-color: #292929; outline: solid 3px #292929"
+      >
+        <div class="rotate">
+          <i id="playIcon" class="bi bi-music-note-beamed"></i>
+          <i id="stopIcon" style="display: none" class="bi bi-slash-circle"></i>
+        </div>
+        <audio
+          id="miCancion"
+          src="./build/media/Cancion.mp3"
+          preload="auto"
+          autoplay
+        ></audio>
+      </div>
+
+      <div class="container-fluid primeraSeccion">
+        <div class="row">
+          <div
+            class="col mx-auto text-white d-flex flex-column align-items-center col-md-8"
+          >
+            <p class="fw-bold mt-5 fs-4">15/septiembre/2024</p>
+            <h1 class="text-center fw-bold mt-5">
+              Te invitamos a nuestra Boda
+            </h1>
+            <div class="d-flex w-100 mt-5 justify-content-center timer">
+              <div class="cartel">
+                <div id="dias"></div>
+                <div class="mt-2">Días</div>
+              </div>
+              <div class="cartel">
+                <div id="horas"></div>
+                <div class="mt-2">Horas</div>
+              </div>
+
+              <div class="cartel">
+                <div id="minutos"></div>
+                <div class="mt-2">Mins</div>
+              </div>
+              <div class="cartel">
+                <div id="segundos"></div>
+                <div class="mt-2">Segs.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid segundaSeccion mb-5">
+        <div class="row">
+          <div class="col-md-8 mx-auto d-flex flex-column align-items-center">
+            <div class="iamgeContainer mt-5 mb-5"></div>
+            <h2 class="text-black mt-2 mb-3 text-center">Mali y Rica</h2>
+            <p class="text-center fw-bold text-grey col-md-6">
+              “Hagamos de nuestras manos una sola mano. Hagamos de nuestros
+              corazones un solo corazón. Hagamos de nuestros juramentos el
+              último juramento. Sólo la muerte nos separará”
+            </p>
+            <button
+              id="calendarButton"
+              class="btn btn-dark shadow mt-5 w-50 border-3 fs-4"
+            >
+              <i class="bi bi-calendar-heart me-2"></i> Agregar a mi calendario
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid mt-5 terceraSeccion">
+        <div class="row">
+          <div
+            class="col mx-auto text-white d-flex flex-column align-items-center"
+          >
+            <h3 class="mt-5 shadow-lg border-1 fs-1">Para el evento.</h3>
+            <p class="mt-3 shadow-lg border-1 text-center fs-4">
+              Te agradecemos atender las siguientes indicaciones.
+            </p>
+
+            <div
+              class="vestimentaContainer d-flex flex-column text-center text-black"
+            >
+              <img
+                src="./build/img/assets/damaYcaballero.png"
+                class="w-50 mx-auto imagenIcono"
+                alt=""
+              />
+              <h4 class="mt-5 fw-black text-black fs-4 mt-5 mt-md-2">
+                Código de vestimenta
+              </h4>
+              <p class="mt-5 w-75 mx-auto text-justify mt-md-2">
+                <span class="fs-4 fw-black"> Riguroso formal</span> <br /><br />
+                <span class="fs-5 fw-bold"> Hombres:</span><br />
+                En caso de llevar traje negro <br />
+                No usar camisa negra <br /><br />
+                <span class="fs-5 fw-bold"> Mujeres:</span> <br />No negro,
+                <br />No Blanco
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div
+            class="col mx-auto text-white d-flex flex-column align-items-center"
+          >
+            <h2 class="text-black mt-5 mb-3">¡Itinerario!</h2>
+            <p class="text-grey w-75 text-center fs-5">
+              Tu presencia es muy importante para nosotros en cada momento de
+              este día. <br />
+              Agradecemos tu puntualidad
+            </p>
+            <div class="col-10 col-md-6">
+              <ul class="timeline timeline-centered mt-5">
+                <li class="timeline-item wow zoomIn fadeIn">
+                  <div class="timeline-info">
+                    <span>Septiembre 15 2024, 18:00</span>
+                  </div>
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <div class="timeline-body">
+                      <h3 class="timeline-title">
+                        ¡Ceremonia en Terraza Ambia!
+                      </h3>
+                      <p class="timeline-paragraph"></p>
+                    </div>
+                  </div>
+                </li>
+                <li class="timeline-item wow zoomIn fadeIn">
+                  <div class="timeline-info">
+                    <span>Septiembre 15 2024, 19:00</span>
+                  </div>
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <div class="timeline-body">
+                      <h3 class="timeline-title">¡Fiesta en terraza Ambia!</h3>
+                      <p class="timeline-paragraph"></p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid lugarFiestaSeccion">
+        <div class="row mt-5 mt-md-0">
+          <div
+            class="col-10 col-md-6 mx-auto text-grey d-flex flex-column mt-5 mt-md-0"
+          >
+            <img
+              src="build/img/Source/4lugarDeLaFiesta.webp"
+              class="rounded-5"
+              alt=""
+            />
+            <h2 class="text-black mt-5">Lugar de la fiesta</h2>
+            <p>Lugar: Terraza Ambia</p>
+            <p>Día: 15 de Septiembre de 2024</p>
+            <p>Hora: 18:00</p>
+            <p>Domicilio:José Martí 14, Tonalá Centro, 45400 Tonalá, Jal.</p>
+            <a
+              target="_blank"
+              href="https://maps.app.goo.gl/ebDJAKdmj7AsvBZs6"
+              class="btn btn-dark mt-5 w-75"
+              ><i class="bi bi-geo-alt-fill me-3"></i> Ir a lugar
+              <i class="ms-3 bi bi-map"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid cuartaSeccion">
+        <div class="row">
+          <div
+            class="col mx-auto text-white d-flex flex-column align-items-center mt-5"
+          >
+            <h2 class="mt-5">Mesa de Regalos</h2>
+            <p class="text-center mt-3 fw-bold col-md-4">
+              No hay mejor regalo que tener tu compañía en la celebración de
+              nuestra boda, pero si deseas hacernos un detalle contamos con una
+              mesa de regalos o si gustas sumar kilómetros a nuestro viaje
+              dejamos nuestra cuenta bancaria :
+            </p>
+
+            <div class="cardContainer d-flex flex-column align-items-center">
+              <img
+                src="./build/img/Source/5mesaDeRegalo.webp"
+                class="shadow-lg"
+                alt=""
+              />
+              <h3 class="mt-5 text-black fw-black">LIVERPOOL</h3>
+              <p class="text-grey fw-bold mt-3">Número de evento: 51398897</p>
+              <p class="text-grey fw-bold">Nombre evento: Boda Rica y Mali</p>
+              <div class="d-flex mt-5 mb-5">
+                <a
+                  href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51398897"
+                  target="_blank"
+                  class="fs-1 buttonCard me-5"
+                >
+                  <i class="bi bi-box-arrow-up-right"></i
+                ></a>
+
+                <li class="fs-1  buttonCard">
+                  <a
+                    href="#"
+                    class="share-btn button"
+                    data-text="&lt;p&gt;&lt;b&gt;Número de evento: 51282425&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Nombre evento: Renovación de votos Cris y Rox&lt;/b&gt;&lt;/p&gt;"
+                    data-title="Liverpool"
+                    data-url="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51398897"
+                  >
+                    <i class="bi bi-share-fill"></i>
+                  </a>
+                </li>
+              </div>
+            </div>
+
+            <div
+              class="cardContainer d-flex flex-column align-items-center text-grey fs-4 fw-bold text-center"
+            >
+              <h3 class="mt-5 text-grey mb-5">DATOS DE LA TARJETA</h3>
+              <p>Tarjeta: 4152 3139 2339 5136</p>
+              <p>BBVA Bancomer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div
+            class="col mx-auto d-flex flex-column align-items-center text-center"
+          >
+            <h2 class="mt-5 text-grey">Galería de aventuras</h2>
+            <div class="row flex gap-10 w-75">
+              <div class="col-4 col-md-3 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/1.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #1"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/1.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/2.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #2"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/2.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/3.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #3"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/3.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/4.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #4"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/4.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/5.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #5"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/5.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/6.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #6"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/6.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/7.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #7"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/7.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/8.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #8"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/8.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/9.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #9"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/9.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/10.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #10"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/10.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/11.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #11"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/11.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/12.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #12"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/12.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/13.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #13"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/13.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/14.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #14"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/14.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/15.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #15"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/15.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/16.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #16"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/16.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/17.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #17"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/17.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/18.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #18"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/18.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/19.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #19"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/19.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/20.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #20"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/20.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/21.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #21"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/21.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/22.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #22"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/22.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+              <div class="col-4 galleryImageContainer">
+                <a
+                  href="./build/img/gallery/23.webp"
+                  data-fancybox="gallery"
+                  data-caption="Caption #23"
+                >
+                  <figure style="text-align: center">
+                    <img src="./build/img/gallery/23.webp" class="img-fluid" />
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid quintaSeccion">
+        <div class="row w-75 mx-auto rounded-5 bg-white">
+          <div
+            class="col mx-auto d-flex flex-column align-items-center text-center"
+          >
+            <h3 class="text-grey mt-5">¡Confirma tu asistencia por favor!</h3>
+            <p>Haz click en el botón de whatsapp</p>
+
+            <a
+              target="_blank"
+              rel="nofollow"
+              href="https://wa.me/5213314140070?text=%C2%A1Hola%21%2C+Quiero+confirmar+mi+invitaci%C3%B3n"
+              class="whatsapp-button"
+            >
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div
+            class="col mx-auto text-center d-flex flex-column align-items-center"
+          >
+            <h2 class="fw-black text-grey">¡Gracias por acompañarnos!</h2>
+            <p>Les compartimos nuestra sugerencia.</p>
+            <img
+              src="build/img/Source/graciasPorAcompañarnos.webp"
+              class="img-fluid w-75 rounded-5"
+              alt=""
+            />
+            <div class="accordion mt-5" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    Participación
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <div class="accordion-body">
+                    Favor de confirmar su asistencia lo antes posible para
+                    asegurar tu lugar. En caso de no confirmar antes del 31 de
+                    julio se dará por hecho que no asistirás.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo"
+                  >
+                    NOTAS
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="panelsStayOpen-headingTwo"
+                >
+                  <div class="accordion-body">
+                    Favor de proporcionar al fotógrafo profesional de la boda
+                    todo el espacio necesario para que nuestros recuerdos queden
+                    fabulosos. No interferir entre el fotógrafo y los novios
+                    tratando de tomar fotos propias, en cuanto tengamos las
+                    fotos oficiales con gusto se las compartimos.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree"
+                  >
+                    RECOMENDACIONES
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="panelsStayOpen-headingThree"
+                >
+                  <div class="accordion-body">
+                    Recuerda ser puntual a la ceremonia para que vivamos juntos
+                    toda la experiencia de nuestro día especial. Y no olvides
+                    asistir con la mejor actitud para que juntos hagamos de esta
+                    fecha un día memorable.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="footer container-fluid bg-black d-flex flex-column align-items-center text-center"
+    >
+      <a
+        rel="nofollow"
+        target="_blank"
+        href="https://wa.me/5213318231058?text=Hola,%20me%20gustaría%20una%20invitación%20como%20esta"
+        class="btn btn-outline-light mt-4"
+        >Quiero una invitacion como esta</a
+      >
+      <p class="mt-3">© Copyright 2024 . Todos los derechos reservados,</p>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="bi bi-rocket-fill"></i>
+    </div>
+  </body>
+
+  <!-- 
+      <div class="container-fluid">
+        <div class="row">
+          <div
+            class="col mx-auto text-white d-flex flex-column align-items-center"
+          >
+          </div>
+        </div>
+      </div> -->
+
+  <script>
+    const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+
+    let countDown = new Date("Sept 15, 2024 18:00:00").getTime(),
+      x = setInterval(function () {
+        let now = new Date().getTime(),
+          distance = countDown - now;
+
+        (document.getElementById("dias").innerText = Math.floor(
+          distance / day
+        )),
+          (document.getElementById("horas").innerText = Math.floor(
+            (distance % day) / hour
+          )),
+          (document.getElementById("minutos").innerText = Math.floor(
+            (distance % hour) / minute
+          )),
+          (document.getElementById("segundos").innerText = Math.floor(
+            (distance % minute) / second
+          ));
+      }, second);
+  </script>
+  <!-- boton del calendario -->
+  <script type="application/javascript">
+    const config = {
+      name: "Mali &amp; Ricardo",
+      description: "Te invitamos a celebrar Nuestra boda!!!",
+      startDate: "2024-09-15",
+      endDate: "2024-09-16",
+      startTime: "19:00:00",
+      endTime: "01:00:00",
+      location: "terraza ambia",
+      // //TODO - Poiner el lugar donde cera
+      options: ["Apple", "Google", "iCal", "Outlook.com"],
+      timeZone: "America/Mexico_City",
+      trigger: "click",
+      iCalFileName: "SaveTheDate-Event",
+    };
+    const button = document.getElementById("calendarButton");
+    button.addEventListener("click", () => atcb_action(config, button));
+  </script>
+
+  <script>
+    Fancybox.bind('[data-fancybox="gallery"]', {
+      // Your custom options for a specific gallery
+    });
+  </script>
+
+  <script>
+    //Get the button
+    let mybutton = document.getElementById("back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (
+        document.body.scrollTop > 20 ||
+        document.documentElement.scrollTop > 20
+      ) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    function backToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+
+  <!-- 
+  con esto abrimos automaticamente un modal de bootstrap
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+      myModal.show(); // Abre el modal automáticamente al cargar la página
+    });
+  </script> -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      Swal.fire({
+        title: "¡Bienvenido!",
+        text: "Bienvenido a nuestra invitacion",
+        iconHtml:
+          '<div class="sweerAlertCustomize"> <i class="bi bi-heart-fill sweerAlertCustomize"></i> </div>',
+        confirmButtonText: "Aceptar",
+      });
+    });
+  </script>
+
+  <script>
+    let audioButton1 = true;
+    let buttonMusic = document.getElementById("audio-button-1");
+    let icon1 = document.getElementById("playIcon");
+    let icon2 = document.getElementById("stopIcon");
+    buttonMusic.addEventListener("click", function () {
+      if (audioButton1) {
+        icon1.style.display = "none";
+        icon2.style.display = "block";
+
+        document.getElementById("miCancion").play();
+      } else {
+        icon1.style.display = "block";
+        icon2.style.display = "none";
+
+        document.getElementById("miCancion").pause();
+      }
+      audioButton1 = !audioButton1;
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Click
+      document.querySelectorAll(".share-btn").forEach(function (element) {
+        element.addEventListener("click", function (e) {
+          e.preventDefault();
+          console.log("Share!!!");
+
+          var title = this.getAttribute("data-title");
+          var text = this.getAttribute("data-text");
+          var url = this.getAttribute("data-url");
+          var shareData = {};
+
+          if (url !== "") {
+            shareData = {
+              title: title,
+              text: text,
+              url: url,
+            };
+          } else {
+            shareData = {
+              title: title,
+              text: text,
+              url: url,
+            };
+          }
+
+          if (navigator.share) {
+            navigator.share(shareData);
+          } else {
+            console.error(
+              "La API Web Share no está soportada en este navegador."
+            );
+            // Aquí podrías ofrecer un comportamiento alternativo para compartir en redes sociales, por ejemplo, abrir una ventana emergente con la URL predefinida.
+          }
+        });
+      });
+    });
+  </script>
+</html>
