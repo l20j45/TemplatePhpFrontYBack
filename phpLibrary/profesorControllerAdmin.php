@@ -79,7 +79,7 @@
         <div class="container-lg">
             <div class="row d-flex flex-column">
                 <div class="col-md-8 mx-auto">
-                    <h2 class="mt-5">Datos del Alumnos</h2>
+                    <h2 class="mt-5">Datos del Profesor</h2>
 
                 </div>
                 <div class="col-md-8 mx-auto">
@@ -95,23 +95,22 @@
                         $nombre = $_POST['nombre'];
                         $apellidoPaterno = $_POST['apellidoPat'];
                         $apellidoMaterno = $_POST['apellidoMat'];
-                        $usuario = $_POST['usuario'];
-                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET `codigo`='$codigo' , `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`='2',`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
+                        $gradoAcademico = $_POST['gradoAcademico'];
+                        mysqli_query($conn, "UPDATE `minisiiau`.`profesor` SET `codigo`='$codigo' , `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`gradoAcademico`='$gradoAcademico' WHERE  `codigo`=$codigo;") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         echo '<script>alert("Registro Modificado")</script>';
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/AlumnoAdmin.php";
+window.location.href = "../Admin/ProfesorAdmin.php?accion=listar";
 </script>';
                     } else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'editar') {
                         $accion = $_GET['accion'];
                         $codigo = $_GET['codigo'];
 
-                        $registros = mysqli_query($conn, "select * from usuario where codigo = $codigo limit 1") or
+                        $registros = mysqli_query($conn, "select * from profesor where codigo = $codigo limit 1") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         $resultado = $registros->fetch_assoc();
-
 
                         echo <<<EOT
                             <form action="?" method="post">
@@ -136,13 +135,8 @@ window.location.href = "../Admin/AlumnoAdmin.php";
                         </div>
 
                         <div class="form-group">
-                            <label for="Edad">Edad:</label>
-                            <input type="Edad" name="edad" value="{$resultado['edad']}" class="form-control" id="Edad" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Usuario">Usuario:</label>
-                            <input type="Usuario" name="usuario" value="{$resultado['usuario']}" class="form-control" id="Usuario" />
+                            <label for="Usuario">Grado Academico:</label>
+                            <input type="Usuario" name="gradoAcademico" value="{$resultado['gradoAcademico']}" class="form-control" id="Usuario" />
                         </div>
 
                         <button type="submit" name="editarInterno" class="btn btn-primary rounded mt-5">Submit</button>
@@ -150,18 +144,31 @@ window.location.href = "../Admin/AlumnoAdmin.php";
 EOT;
 
                         CloseCon($conn);
-                    }
-                    else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'borrar') {
+                    } else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'borrar') {
                         $codigo = $_GET['codigo'];
-                         mysqli_query($conn, "DELETE FROM usuario WHERE codigo=$codigo") or
+                        mysqli_query($conn, "DELETE FROM profesor WHERE codigo=$codigo") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         echo '<script>alert("Registro Borrado")</script>';
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/AlumnoAdmin.php";
+window.location.href = "../Admin/ProfesorAdmin.php";
 </script>';
-echo"Se imprimio esto";
+                    } else if (isset($_GET['accion']) && $_GET['accion'] == 'agregar') {
+
+
+                        $nombre = $_POST['nombre'];
+                        $apellidoPaterno = $_POST['apellidoPat'];
+                        $apellidoMaterno = $_POST['apellidoMat'];
+                        $gradoAcademico = $_POST['gradoAcademico'];
+                        mysqli_query($conn, "insert into profesor (nombre, apellidoPaterno, apellidoMaterno, gradoAcademico) values ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$gradoAcademico');") or
+                            die("Problemas en el Insert:" . mysqli_error($conn));
+                        echo '<script>alert("Registro Registro Insertado")</script>';
+                        CloseCon($conn);
+
+                        echo '    <script type="text/javascript">
+window.location.href = "../Admin/ProfesorAdmin.php?accion=listar";
+</script>';
                     }
                     ?>
 

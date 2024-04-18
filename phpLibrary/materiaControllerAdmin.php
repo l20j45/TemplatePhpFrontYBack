@@ -78,8 +78,8 @@
     <main class="flex-grow-1">
         <div class="container-lg">
             <div class="row d-flex flex-column">
-                <div class="col-md-8 mx-auto">
-                    <h2 class="mt-5">Datos del Alumnos</h2>
+                <div class="col col-md-8 mx-auto">
+                    <h2 class="mt-5">Datos del Profesor</h2>
 
                 </div>
                 <div class="col-md-8 mx-auto">
@@ -91,77 +91,68 @@
 
                     if (isset($_POST['editarInterno'])) {
 
-                        $codigo = $_POST['codigo'];
-                        $nombre = $_POST['nombre'];
-                        $apellidoPaterno = $_POST['apellidoPat'];
-                        $apellidoMaterno = $_POST['apellidoMat'];
-                        $usuario = $_POST['usuario'];
-                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET `codigo`='$codigo' , `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`='2',`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
+
+                        $nombreMateria = $_POST['nombreMateria'];
+                        $codigoMateria = $_POST['codigoMateria'];
+
+                        mysqli_query($conn, "UPDATE `materia` SET  `nombreMateria`='$nombreMateria' WHERE  `codigoMateria`=$codigoMateria;") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         echo '<script>alert("Registro Modificado")</script>';
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/AlumnoAdmin.php";
+window.location.href = "../Admin/MateriaAdmin.php?accion=listar";
 </script>';
                     } else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'editar') {
                         $accion = $_GET['accion'];
                         $codigo = $_GET['codigo'];
 
-                        $registros = mysqli_query($conn, "select * from usuario where codigo = $codigo limit 1") or
+                        $registros = mysqli_query($conn, "select * from materia where codigoMateria = $codigo limit 1") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         $resultado = $registros->fetch_assoc();
-
 
                         echo <<<EOT
                             <form action="?" method="post">
                             <div class="form-group">
                             <label for="codigo">Codigo:</label>
-                            <input type="codigo" name="codigo" value="{$resultado['codigo']}" class="form-control" id="codigo" />
+                            <input type="codigo" name="codigoMateria" value="{$resultado['codigoMateria']}" class="form-control" readonly="readOnly" id="codigo" />
                         </div>
-                        <div class="d-flex gap-3">
+                        
                             <div class="form-group">
                                 <label for="nombre">nombre:</label>
-                                <input type="nombre" name="nombre" value="{$resultado['nombre']}"  class="form-control" id="nombre" />
+                                <input type="nombre" name="nombreMateria" value="{$resultado['nombreMateria']}"  class="form-control" id="nombre" />
                             </div>
 
-                            <div class="form-group">
-                                <label for="ApellidoPat">Apellido Paterno:</label>
-                                <input type="ApellidoPat" name="apellidoPat" value="{$resultado['apellidoPaterno']}" class="form-control" id="ApellidoPat" />
-                            </div>
-                            <div class="form-group">
-                                <label for="ApellidoMat">Apellido Materno:</label>
-                                <input type="ApellidoMat" name="apellidoMat" value="{$resultado['apellidoMaterno']}" class="form-control" id="ApellidoMat" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Edad">Edad:</label>
-                            <input type="Edad" name="edad" value="{$resultado['edad']}" class="form-control" id="Edad" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Usuario">Usuario:</label>
-                            <input type="Usuario" name="usuario" value="{$resultado['usuario']}" class="form-control" id="Usuario" />
-                        </div>
+                            
 
                         <button type="submit" name="editarInterno" class="btn btn-primary rounded mt-5">Submit</button>
                         </form>
 EOT;
 
                         CloseCon($conn);
-                    }
-                    else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'borrar') {
+                    } else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'borrar') {
                         $codigo = $_GET['codigo'];
-                         mysqli_query($conn, "DELETE FROM usuario WHERE codigo=$codigo") or
+                        mysqli_query($conn, "DELETE FROM materia WHERE codigoMateria=$codigo") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         echo '<script>alert("Registro Borrado")</script>';
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/AlumnoAdmin.php";
+window.location.href = "../Admin/MateriaAdmin.php?accion=listar";
 </script>';
-echo"Se imprimio esto";
+                    } else if (isset($_GET['accion']) && $_GET['accion'] == 'agregar') {
+
+
+                        $nombreMateria = $_POST['nombreMateria'];
+
+                        mysqli_query($conn, "insert into materia (nombreMateria) values ('$nombreMateria');") or
+                            die("Problemas en el Insert:" . mysqli_error($conn));
+                        echo '<script>alert("Registro Registro Insertado")</script>';
+                        CloseCon($conn);
+
+                        echo '    <script type="text/javascript">
+window.location.href = "../Admin/MateriaAdmin.php?accion=listar";
+</script>';
                     }
                     ?>
 

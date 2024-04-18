@@ -78,7 +78,7 @@
     <main class="flex-grow-1">
         <div class="container-lg">
             <div class="row d-flex flex-column">
-                <div class="col-md-8 mx-auto">
+                <div class="col col-md-8 mx-auto">
                     <h2 class="mt-5">Datos del Alumnos</h2>
 
                 </div>
