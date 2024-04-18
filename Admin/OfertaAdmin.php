@@ -18,101 +18,127 @@
 <body class="d-flex flex-column min-vh-100 w-100">
   <?php
   include '../phpLibrary/layout.php';
+  include '../phpLibrary/mysqlConnect.php';
+  $conn = OpenCon();
   headerAdmin();
   ?>
   <main class="flex-grow-1">
     <div class="container-lg">
       <div class="row d-flex flex-column">
-        <div class="col col-md-8 mx-auto overflow-scroll">
-        <?php
+        <div class="col col-md-8 mx-auto " style="overflow-y: scroll;">
+          <?php
           if (isset($_GET['accion']) && $_GET['accion'] == 'listar') {
           ?>
-          <h2 class="mt-5">Horario</h2>
-          <table class="table mt-5">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">NRC</th>
-                <th scope="col">nombre Materia</th>
-                <th scope="col">Horario</th>
-                <th scope="col">Dia 1</th>
-                <th scope="col">Dia 2</th>
-                <th scope="col">Nombre Profesor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php
-              include '../phpLibrary/mysqlConnect.php';
-              $conn = OpenCon();
+            <h2 class="mt-5">Horario</h2>
+            <table class="table mt-5">
+              <thead class="thead-dark">
+                <tr>
 
-              $registros = mysqli_query($conn, "SELECT m.codigoMateria,pm.nrc, m.nombreMateria,pm.nrc, pm.Horario,pm.Dia1,pm.Dia2, CONCAT(p.nombre,' ', p.apellidoPaterno,' ',p.apellidoMaterno) AS profesor
+                  <th scope="col">NRC</th>
+                  <th scope="col">nombre Materia</th>
+                  <th scope="col">Horario</th>
+                  <th scope="col">Dia 1</th>
+                  <th scope="col">Dia 2</th>
+                  <th scope="col">Nombre Profesor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+
+
+
+                $registros = mysqli_query($conn, "SELECT m.codigoMateria,pm.nrc, m.nombreMateria,pm.nrc, pm.Horario,pm.Dia1,pm.Dia2, CONCAT(p.nombre,' ', p.apellidoPaterno,' ',p.apellidoMaterno) AS profesor
               FROM materia m 
               INNER JOIN profesormateria pm ON pm.codigoMateria = m.codigoMateria
               INNER JOIN profesor p ON p.codigo = pm.codigoProfesor;") or
-                die("Problemas en el select:" . mysqli_error($conn));
+                  die("Problemas en el select:" . mysqli_error($conn));
 
-              while ($reg = mysqli_fetch_array($registros)) {
+                while ($reg = mysqli_fetch_array($registros)) {
 
-                echo <<<EOT
+                  echo <<<EOT
                                     <tr>
-                                    <th scope="row">{$reg['codigoMateria']}</th>
+                                    
                                     <td>{$reg['nrc']}</td>
                                     <td>{$reg['nombreMateria']}</td>
                                     <td>{$reg['Horario']}</td>
                                     <td>{$reg['Dia1']}</td>
                                     <td>{$reg['Dia2']}</td>
                                     <td>{$reg['profesor']}</td>
-                                    <td><a href="../phpLibrary/alumnoControllerAdmin.php?accion=editar&codigo={$reg['nrc']}" class="btn btn-warning text-white rounded">Editar</a>  </td>
-                                    <td><a href="../phpLibrary/alumnoControllerAdmin.php?accion=borrar&codigo={$reg['nrc']}" class="btn btn-danger text-white rounded">Borrar</a></td>
+                                    <td><a href="../phpLibrary/ofertaControllerAdmin.php?accion=editar&codigo={$reg['nrc']}" class="btn btn-warning text-white rounded">Editar</a>  </td>
+                                    <td><a href="../phpLibrary/ofertaControllerAdmin.php?accion=borrar&codigo={$reg['nrc']}" class="btn btn-danger text-white rounded">Borrar</a></td>
                                   </tr>
 EOT;
-              }
-              CloseCon($conn);
-              ?>
+                }
+                CloseCon($conn);
+                ?>
 
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          <?php
+          } else {
+          ?>
+            <h2 class="mt-5">Registrar Oferta</h2>
+            <?php
+            $registrosMaterias = mysqli_query($conn, "SELECT * from materia;") or
+              die("Problemas en el select:" . mysqli_error($conn));
+
+            $registrosProfesores = mysqli_query($conn, "SELECT * from profesor;") or
+              die("Problemas en el select:" . mysqli_error($conn));
+
+            ?>
+            <form action="../phpLibrary/ofertaControllerAdmin.php?accion=agregar" method="post">
+              <div class="form-group">
+                <label for="Nrc">Nrc:</label>
+                <input type="text" name="Nrc" class="form-control" id="Nrc" />
+              </div>
+              <div class="form-group">
+                <label for="materia">Selecciona una materia:</label>
+                <select name="materia" class="form-control" id="materia">
+
+                  <?php
+                  while ($reg = mysqli_fetch_array($registrosMaterias)) {
+                    echo <<<EOT
+                                <option value="{$reg['codigoMateria']}">{$reg['nombreMateria']}</option>;
+EOT;
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="horario">Horario:</label>
+                <input type="text" name="horario" class="form-control" id="horario" />
+              </div>
+
+              <div class="form-group">
+                <label for="dia1">Dia 1:</label>
+                <input type="text" name="dia1" class="form-control" id="dia1" />
+              </div>
+              <div class="form-group">
+                <label for="dia2">Dia 2:</label>
+                <input type="text" name="dia2" class="form-control" id="dia2" />
+              </div>
+              <div class="form-group">
+                <label for="profesor">Selecciona un profesor:</label>
+                <select name="profesor" class="form-control" id="profesor">
+
+                  <?php
+                  while ($reg = mysqli_fetch_array($registrosProfesores)) {
+                    echo <<<EOT
+                                <option value="{$reg['codigo']}">{$reg['nombre']} {$reg['apellidoPaterno']} {$reg['apellidoMaterno']}  </option>;
+EOT;
+                  }
+
+                  ?>
+                </select>
+              </div>
+              <button type="submit" name="agregar" class="btn btn-primary rounded mt-5">Enviar</button>
+
+            </form>
+
+
           <?php
           }
-          else {
           ?>
-          <h2 class="mt-5">Registrar Materia</h2>
-          <form class="mt-5" action="?" method="post">
-                            <div class="form-group">
-                            <label for="codigo">Codigo:</label>
-                            <input type="codigo" name="codigo"  class="form-control" id="codigo" />
-                        </div>
-                        <div class="d-flex gap-3">
-                            <div class="form-group">
-                                <label for="nombre">nombre:</label>
-                                <input type="nombre" name="nombre"   class="form-control" id="nombre" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="ApellidoPat">Apellido Paterno:</label>
-                                <input type="ApellidoPat" name="apellidoPat"  class="form-control" id="ApellidoPat" />
-                            </div>
-                            <div class="form-group">
-                                <label for="ApellidoMat">Apellido Materno:</label>
-                                <input type="ApellidoMat" name="apellidoMat"  class="form-control" id="ApellidoMat" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Edad">Edad:</label>
-                            <input type="Edad" name="edad"  class="form-control" id="Edad" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Usuario">Usuario:</label>
-                            <input type="Usuario" name="usuario"  class="form-control" id="Usuario" />
-                        </div>
-
-                        <button type="submit" name="editarInterno" class="btn btn-primary rounded mt-5">Submit</button>
-                        </form>
-                        <?php
-        } 
-        ?>
         </div>
 
       </div>

@@ -23,7 +23,7 @@
   <main class="flex-grow-1">
     <div class="container-lg">
       <div class="row d-flex flex-column">
-        <div class="col col-md-8 mx-auto overflow-scroll" >
+        <div class="col col-md-8 mx-auto "  style="overflow-y: scroll; overflow-x: auto;" >
           <h2 class="mt-5">Datos del Alumnos</h2>
           <table class="table mt-5">
             <thead class="thead-dark">

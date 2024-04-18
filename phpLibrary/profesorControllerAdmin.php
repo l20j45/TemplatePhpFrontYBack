@@ -18,7 +18,7 @@
 <body class="d-flex flex-column min-vh-100 w-100">
     <?php
     include '../phpLibrary/layout.php';
-    headerAdmin();
+    headerControllerAdmin();
     ?>
     <main class="flex-grow-1">
         <div class="container-lg">

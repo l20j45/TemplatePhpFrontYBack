@@ -23,7 +23,7 @@
   <main class="flex-grow-1">
     <div class="container-lg">
       <div class="row d-flex flex-column">
-        <div class="col col-md-8 mx-auto overflow-scroll">
+        <div class="col col-md-8 mx-auto "  style="overflow-y: scroll;">
           <?php
           if (isset($_GET['accion']) && $_GET['accion'] == 'listar') {
           ?>
