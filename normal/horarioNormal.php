@@ -55,7 +55,7 @@
                 INNER JOIN profesor p ON p.codigo = pm.codigoProfesor
                 WHERE um.codigoUsuario = 101;") or
                   die("Problemas en el select:" . mysqli_error($conn));
-$contador=1;
+                $contador = 1;
                 while ($reg = mysqli_fetch_array($registros)) {
 
                   echo <<<EOT
@@ -69,8 +69,8 @@ $contador=1;
                                     <td><a href="../phpLibrary/horarioControllerNormal.php?accion=borrar&codigo={$reg['id']}" class="btn btn-danger text-white rounded">Borrar</a></td>
                                   </tr>
 EOT;
-$contador++;
-}
+                  $contador++;
+                }
 
                 CloseCon($conn);
                 ?>
@@ -80,61 +80,34 @@ $contador++;
           <?php
           } else {
           ?>
-            <h2 class="mt-5">Registrar Oferta</h2>
+            <h2 class="mt-5">Registrar Materia</h2>
             <?php
-            $registrosMaterias = mysqli_query($conn, "SELECT * from materia;") or
-              die("Problemas en el select:" . mysqli_error($conn));
-
-            $registrosProfesores = mysqli_query($conn, "SELECT * from profesor;") or
+            $registrosCompleto = mysqli_query($conn, "SELECT pm.nrc, m.nombreMateria, CONCAT(p.nombre,' ', p.apellidoPaterno,' ',p.apellidoMaterno) AS profesor, pm.Horario,pm.Dia1,pm.Dia2
+            FROM materia m 
+            INNER JOIN profesormateria pm ON pm.codigoMateria = m.codigoMateria
+            INNER JOIN profesor p ON p.codigo = pm.codigoProfesor;") or
               die("Problemas en el select:" . mysqli_error($conn));
 
             ?>
-            <form action="../phpLibrary/ofertaControllerAdmin.php?accion=agregar" method="post">
+            <form action="../phpLibrary/horarioControllerNormal.php?accion=agregar" method="post">
               <div class="form-group">
-                <label for="Nrc">Nrc:</label>
-                <input type="text" name="Nrc" class="form-control" id="Nrc" />
+                <input type="hidden" name="codigoAlumno" value="101" class="form-control" id="codigoAlumno" />
               </div>
               <div class="form-group">
-                <label for="materia">Selecciona una materia:</label>
+                <label for="materia">Selecciona un profesor:</label>
                 <select name="materia" class="form-control" id="materia">
 
                   <?php
-                  while ($reg = mysqli_fetch_array($registrosMaterias)) {
+                  while ($reg = mysqli_fetch_array($registrosCompleto)) {
                     echo <<<EOT
-                                <option value="{$reg['codigoMateria']}">{$reg['nombreMateria']}</option>;
-EOT;
-                  }
-                  ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="horario">Horario:</label>
-                <input type="text" name="horario" class="form-control" id="horario" />
-              </div>
-
-              <div class="form-group">
-                <label for="dia1">Dia 1:</label>
-                <input type="text" name="dia1" class="form-control" id="dia1" />
-              </div>
-              <div class="form-group">
-                <label for="dia2">Dia 2:</label>
-                <input type="text" name="dia2" class="form-control" id="dia2" />
-              </div>
-              <div class="form-group">
-                <label for="profesor">Selecciona un profesor:</label>
-                <select name="profesor" class="form-control" id="profesor">
-
-                  <?php
-                  while ($reg = mysqli_fetch_array($registrosProfesores)) {
-                    echo <<<EOT
-                                <option value="{$reg['codigo']}">{$reg['nombre']} {$reg['apellidoPaterno']} {$reg['apellidoMaterno']}  </option>;
+                                <option value="{$reg['nrc']}">{$reg['nombreMateria']} {$reg['profesor']} {$reg['Horario']} {$reg['Dia1']} {$reg['Dia2']}   </option>;
 EOT;
                   }
 
                   ?>
                 </select>
               </div>
-              <button type="submit" name="agregar" class="btn btn-primary rounded mt-5">Enviar</button>
+              <button type="submit" name="agregar" class="btn btn-primary rounded mt-5">Inscribirte</button>
 
             </form>
 

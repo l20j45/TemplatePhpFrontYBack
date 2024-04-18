@@ -135,20 +135,16 @@ window.location.href = "../normal/horarioNormal.php?accion=listar";
                     } else if (isset($_GET['accion']) && $_GET['accion'] == 'agregar') {
 
                         var_dump($_POST);
-                        $nrc = $_POST['Nrc'];
+                        $codigoAlumno = $_POST['codigoAlumno'];
                         $materia = $_POST['materia'];
-                        $horario = $_POST['horario'];
-                        $dia1 = $_POST['dia1'];
-                        $dia2 = $_POST['dia2'];
-                        $profesor = $_POST['profesor'];
 
-                        mysqli_query($conn, "INSERT INTO `profesormateria` (`nrc`, `codigoMateria`, `codigoProfesor`, `Horario`, `Dia1`, `Dia2`) VALUES ($nrc, $materia, $profesor, '$horario', '$dia1', '$dia2');") or
+                        mysqli_query($conn, "INSERT INTO `usuariomateria` (`codigoUsuario`, `nrcMateria`) VALUES ($codigoAlumno, $materia);") or
                             die("Problemas en el Insert:" . mysqli_error($conn));
                         echo '<script>alert("Registro Insertado")</script>';
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/OfertaAdmin.php?accion=listar";
+window.location.href = "../normal/horarioNormal.php?accion=listar";
 </script>';
                     }
                     ?>
