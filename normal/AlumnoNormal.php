@@ -63,7 +63,7 @@
           <?php
           include '../phpLibrary/mysqlConnect.php';
           $conn = OpenCon();
-          $codigo = 1;
+          $codigo = 101;
           $registros = mysqli_query($conn, "select * from usuario where codigo = $codigo limit 1") or
             die("Problemas en el select:" . mysqli_error($conn));
           $resultado = $registros->fetch_assoc();
