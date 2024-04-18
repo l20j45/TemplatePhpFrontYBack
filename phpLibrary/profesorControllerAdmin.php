@@ -16,65 +16,10 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 w-100">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white fw-bold" href="#">MiniSiiau</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Alumno
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Ver</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Borrar</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Maestro
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Ver</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Borrar</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Materia
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Ver</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                                <li><a class="dropdown-item" href="#">Borrar</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Editar</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php
+    include '../phpLibrary/layout.php';
+    headerAdmin();
+    ?>
     <main class="flex-grow-1">
         <div class="container-lg">
             <div class="row d-flex flex-column">
@@ -177,15 +122,9 @@ window.location.href = "../Admin/ProfesorAdmin.php?accion=listar";
         </div>
     </main>
 
-    <footer class="footer mt-auto bg-primary d-flex flex-column align-items-center">
-        <div class="container-xl h-auto">
-            <div class="row">
-                <div class="col-6 mx-auto text-center">
-                    <span class="fs-5 text-white fw-bold">Sistemas Mimika</span>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php
+    footerAdmin();
+    ?>
 </body>
 
 </html>
