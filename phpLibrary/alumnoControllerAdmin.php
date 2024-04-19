@@ -106,7 +106,7 @@ EOT;
 window.location.href = "../Admin/AlumnoAdmin.php";
 </script>';
                         echo "Se imprimio esto";
-                    }
+                    } 
                     ?>
 
                 </div>

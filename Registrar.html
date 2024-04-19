@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <script src="./build/js/bootstrap.min.js"></script>
+    <script src="./build/js/bootstrap.bundle.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+
+    <link rel="stylesheet" href="build/css/app.css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100 min-vw-100">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white fw-bold" href="#">MiniSiiau</a>
+        </div>
+      </nav>
+    </header>
+    <main class="flex-grow-1 d-flex justify-content-center flex-wrap">
+      <div class="container-lg">
+        <div class="row d-flex flex-column">
+          <div class="col-md-8 mx-auto loggin">
+            <h2 class="mt-5">Registrate</h2>
+            <form action="./phpLibrary/alumnoControllerNormal.php?accion=agregar" method="post">
+
+              <div class="d-flex gap-3">
+                <div class="form-group">
+                  <label for="nombre">nombre:</label>
+                  <input
+                    type="text"
+                    name="nombre"
+                    
+                    class="form-control"
+                    id="nombre"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="ApellidoPat">Apellido Paterno:</label>
+                  <input
+                    type="text"
+                    name="apellidoPat"
+                    
+                    class="form-control"
+                    id="ApellidoPat"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="ApellidoMat">Apellido Materno:</label>
+                  <input
+                    type="text"
+                    name="apellidoMat"
+                    
+                    class="form-control"
+                    id="ApellidoMat"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="Edad">Edad:</label>
+                <input
+                  type="text"
+                  name="edad"
+                  
+                  class="form-control"
+                  id="Edad"
+                />
+              </div>
+              <div class="form-group">
+                <label for="carrera">Carrera:</label>
+                <input
+                  type="carrera"
+                  name="carrera"
+                  
+                  class="form-control"
+                  id="carrera"
+                />
+              </div>
+              <div class="form-group">
+                <label for="color">Color:</label>
+                <input
+                  type="color"
+                  name="color"
+                  class="form-control"
+                  id="color"
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  
+                  class="form-control"
+                  id="password"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="Usuario">Usuario:</label>
+                <input
+                  type="text"
+                  name="usuario"
+                  
+                  class="form-control"
+                  id="Usuario"
+                />
+              </div>
+
+              <button
+                type="submit"
+                name="agregar"
+                class="btn btn-primary rounded mt-5"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="footer mt-auto bg-primary d-flex flex-column align-items-center"
+    >
+      <div class="container-xl h-auto">
+        <div class="row">
+          <div class="col-6 mx-auto text-center">
+            <span class="fs-5 text-white fw-bold">Sistemas Mimika</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
