@@ -216,6 +216,7 @@ function headerControllerAdmin()
             </li>
               
             </ul>
+            <a href="../phpLibrary/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
           </div>
         </div>
       </nav>
@@ -261,6 +262,7 @@ function headerControllerNormal()
               </ul>
             </li>
           </ul>
+          <a href="../phpLibrary/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
         </div>
       </div>
     </nav>

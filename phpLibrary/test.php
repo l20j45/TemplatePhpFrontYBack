@@ -5,7 +5,7 @@
 		require("conexion.php");
  
 			$loginNombre = $_POST["usuario"];
-			$loginPassword = md5($_POST["password"]);
+			$loginPassword = $_POST["password"];
  
 			$consulta = "SELECT * FROM admin_user WHERE usuario='$loginNombre' AND password='$loginPassword'";
  
@@ -38,5 +38,5 @@
 		} else {
 			header("Location: index.php");
 		}
- 
+    
  ?>

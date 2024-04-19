@@ -18,12 +18,12 @@
 <body class="d-flex flex-column min-vh-100 w-100">
   <?php
   include '../phpLibrary/layout.php';
-  headerAdmin();
+  headerControllerAdmin();
   ?>
   <main class="flex-grow-1">
     <div class="container-lg">
       <div class="row d-flex flex-column">
-        <div class="col col-md-8 mx-auto "  style="overflow-y: scroll; overflow-x: auto;" >
+        <div class="col col-md-8 mx-auto " style="overflow-y: scroll; overflow-x: auto;">
           <h2 class="mt-5">Datos del Alumnos</h2>
           <table class="table mt-5">
             <thead class="thead-dark">
