@@ -140,8 +140,8 @@ window.location.href = "../Admin/OfertaAdmin.php?accion=listar";
                         $dia1 = $_POST['dia1'];
                         $dia2 = $_POST['dia2'];
                         $profesor = $_POST['profesor'];
-
-                        mysqli_query($conn, "INSERT INTO `profesormateria` (`nrc`, `codigoMateria`, `codigoProfesor`, `Horario`, `Dia1`, `Dia2`) VALUES ($nrc, $materia, $profesor, '$horario', '$dia1', '$dia2');") or
+                        echo "aqui estoy" .$nrc;
+                        mysqli_query($conn, "INSERT INTO `profesormateria` (`nrc`, `codigoMateria`, `codigoProfesor`, `Horario`, `Dia1`, `Dia2`) VALUES ('$nrc', $materia, $profesor, '$horario', '$dia1', '$dia2');") or
                             die("Problemas en el Insert:" . mysqli_error($conn));
                         echo '<script>alert("Registro Insertado")</script>';
                         CloseCon($conn);

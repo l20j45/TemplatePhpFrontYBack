@@ -29,9 +29,9 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Materia</th>
-                <th scope="col">Dia</th>
-                <th scope="col">Horario</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Usuario</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
               </tr>
@@ -48,7 +48,7 @@
                 echo <<<EOT
                                     <tr>
                                     <th scope="row">{$reg['codigo']}</th>
-                                    <td>{$reg['nombre']}</td>
+                                    <td>{$reg['nombre']} {$reg['apellidoPaterno']} {$reg['apellidoMaterno']}</td>
                                     <td>{$reg['carrera']}</td>
                                     <td>@{$reg['usuario']}</td>
                                     <td><a href="../phpLibrary/alumnoControllerAdmin.php?accion=editar&codigo={$reg['codigo']}" class="btn btn-warning text-white rounded">Editar</a>  </td>

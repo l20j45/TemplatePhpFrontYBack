@@ -20,7 +20,7 @@
   include '../phpLibrary/layout.php';
   include '../phpLibrary/mysqlConnect.php';
   $conn = OpenCon();
-  headerAdmin();
+  headerControllerNormal();
   ?>
   <main class="flex-grow-1">
     <div class="container-lg">
