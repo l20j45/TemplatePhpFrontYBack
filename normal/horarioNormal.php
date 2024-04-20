@@ -46,14 +46,14 @@
               <tbody>
                 <?php
 
-
+                $codigo = $_COOKIE['codigo'];
 
                 $registros = mysqli_query($conn, "SELECT m.nombreMateria,CONCAT_WS(' ',p.nombre, p.apellidoPaterno, p.apellidoMaterno) AS nombreProfesor,pm.Dia1,pm.Dia2,pm.Horario,um.id
                 FROM usuariomateria um
                 INNER JOIN profesormateria pm ON pm.nrc = um.nrcMateria
                 INNER JOIN materia m ON m.codigoMateria = pm.codigoMateria
                 INNER JOIN profesor p ON p.codigo = pm.codigoProfesor
-                WHERE um.codigoUsuario = 101;") or
+                WHERE um.codigoUsuario = $codigo;") or
                   die("Problemas en el select:" . mysqli_error($conn));
                 $contador = 1;
                 while ($reg = mysqli_fetch_array($registros)) {
@@ -91,7 +91,7 @@ EOT;
             ?>
             <form action="../phpLibrary/horarioControllerNormal.php?accion=agregar" method="post">
               <div class="form-group">
-                <input type="hidden" name="codigoAlumno" value="101" class="form-control" id="codigoAlumno" />
+                <input type="hidden" name="codigoAlumno" value="<?php echo $_COOKIE['codigo']; ?>" class="form-control" id="codigoAlumno" />
               </div>
               <div class="form-group">
                 <label for="materia">Selecciona un profesor:</label>

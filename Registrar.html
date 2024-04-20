@@ -29,9 +29,19 @@
         <div class="row d-flex flex-column">
           <div class="col-md-8 mx-auto loggin">
             <h2 class="mt-5">Registrate</h2>
-            <form action="./phpLibrary/alumnoControllerNormal.php?accion=agregar" method="post">
-
+            <form action="./phpLibrary/alumnoControllerNormal.php?accion=agregar" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="imagen">Foto de perfil:</label>
+                <input
+                  type="file"
+                  name="imagen"
+                  
+                  class="form-control"
+                  id="imagen"
+                />
+              </div>
               <div class="d-flex gap-3">
+
                 <div class="form-group">
                   <label for="nombre">nombre:</label>
                   <input

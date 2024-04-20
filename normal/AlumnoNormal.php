@@ -16,7 +16,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100 w-100">
-<?php
+  <?php
   include '../phpLibrary/layout.php';
   headerControllerNormal();
   ?>
@@ -29,16 +29,17 @@
           <?php
           include '../phpLibrary/mysqlConnect.php';
           $conn = OpenCon();
-          $codigo = 101;
+          $codigo = $_COOKIE['codigo'];
           $registros = mysqli_query($conn, "select * from usuario where codigo = $codigo limit 1") or
             die("Problemas en el select:" . mysqli_error($conn));
           $resultado = $registros->fetch_assoc();
           if (isset($_GET['accion'])) {
             if ($_GET['accion']  == 'ver') {
 
-
               echo <<<EOT
-              
+              <div class="mt-5 w-25 rounded">
+              <img class="img-fluid imagenesPerfil" src="../phpLibrary/uploads/{$resultado['imagen']}">
+            </div>
               <p class="mt-5">Codigo: {$resultado['codigo']} </p>
               <p>Nombre: {$resultado['nombre']} {$resultado['apellidoPaterno']} {$resultado['apellidoMaterno']}</p>
               <p>Edad: {$resultado['edad']}</p>
@@ -49,7 +50,17 @@ EOT;
             } else if ($_GET['accion']  == 'editar') {
 
               echo <<<EOT
-              <form action="../phpLibrary/alumnoControllerNormal.php?accion=editar" method="post">
+              <form action="../phpLibrary/alumnoControllerNormal.php?accion=editar" method="post" enctype="multipart/form-data">
+              <div class="form-group">
+              <label for="imagen">Foto de perfil:</label>
+              <input
+                type="file"
+                name="imagen"
+                
+                class="form-control"
+                id="imagen"
+              />
+            </div>
             <div class="form-group">
               <label for="codigo">Codigo:</label>
               <input type="codigo" name="codigo" value="{$resultado['codigo']}"  readonly="readonly" class="form-control" id="codigo" />

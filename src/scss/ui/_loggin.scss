@@ -1,6 +1,17 @@
 @use '../base/mixins';
 @use '../custom'as *;
 
+.imagenesPerfil{
+    width: 310px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 6px 0 #ccc;
+    background-image: url(../img/Source/2circuloNew.webp);
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -179,3 +190,4 @@
         -ms-transform: scale(1);
         -o-transform: scale(1);
     }}
+
