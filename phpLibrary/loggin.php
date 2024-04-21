@@ -16,6 +16,7 @@ if (isset($_POST["enviar"])) {
             while ($row = $registros->fetch_array()) {
 
                 $userok = $row["usuario"];
+                $color = $row["colorFondo"];
                 $passok = $row["password"];
                 $codigook = $row["codigo"];
                 $esAdmin = $row["esAdmin"];
@@ -41,6 +42,7 @@ if (isset($_POST["enviar"])) {
 
             setcookie("logueado", TRUE, time() + 3600, "/");
             setcookie("codigo", $codigook, time() + 3600, "/");
+            setcookie("colorFondo", $color, time() + 3600, "/");
             setcookie("esAdmin", $esAdmin, time() + 3600, "/");
             $_SESSION['username'] = $_POST['usuario']; // Guarda el nombre de usuario en la sesión
             $_SESSION['password'] = $_POST['password']; // Gu

@@ -93,6 +93,16 @@ EOT;
               <label for="Usuario">Usuario:</label>
               <input type="Usuario" name="usuario" value="{$resultado['usuario']}" class="form-control" id="Usuario" />
             </div>
+            <div class="form-group">
+            <label for="color">Color:</label>
+            <input
+              type="color"
+              name="color"
+              value="{$resultado['colorFondo']}"
+              class="form-control"
+              id="color"
+            />
+          </div>
 
             <button type="submit" class="btn btn-primary rounded mt-5">Enviar</button>
           </form>
@@ -119,3 +129,8 @@ EOT;
 </body>
 
 </html>
+<style>
+        body {
+            background-color: <?= $_COOKIE['colorFondo'] ?? 'white'; ?>;
+        }
+    </style>

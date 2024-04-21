@@ -35,13 +35,15 @@
 
 
                     if (isset($_POST['editarInterno'])) {
-
+                        var_dump($_POST);
                         $codigo = $_POST['codigo'];
                         $nombre = $_POST['nombre'];
                         $apellidoPaterno = $_POST['apellidoPat'];
                         $apellidoMaterno = $_POST['apellidoMat'];
                         $usuario = $_POST['usuario'];
-                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET `codigo`='$codigo' , `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`='2',`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
+                        $admin = $_POST['admin'];
+                        $admin = $admin == "si" ? 1 : 0;
+                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET `codigo`='$codigo' , `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`esAdmin`=b'$admin',`apellidoMaterno`='$apellidoMaterno',`edad`='2',`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         echo '<script>alert("Registro Modificado")</script>';
                         CloseCon($conn);
@@ -56,38 +58,42 @@ window.location.href = "../Admin/AlumnoAdmin.php";
                         $registros = mysqli_query($conn, "select * from usuario where codigo = $codigo limit 1") or
                             die("Problemas en el select:" . mysqli_error($conn));
                         $resultado = $registros->fetch_assoc();
-
+                        $admin = $resultado['esAdmin'] == 1 ? "si" : "no";
 
                         echo <<<EOT
                             <form action="?" method="post">
                             <div class="form-group">
                             <label for="codigo">Codigo:</label>
-                            <input type="codigo" name="codigo" value="{$resultado['codigo']}" class="form-control" id="codigo" />
+                            <input type="number" name="codigo" value="{$resultado['codigo']}" class="form-control" id="codigo" />
                         </div>
                         <div class="d-flex gap-3">
                             <div class="form-group">
                                 <label for="nombre">nombre:</label>
-                                <input type="nombre" name="nombre" value="{$resultado['nombre']}"  class="form-control" id="nombre" />
+                                <input type="text" name="nombre" value="{$resultado['nombre']}"  class="form-control" id="nombre" />
                             </div>
 
                             <div class="form-group">
                                 <label for="ApellidoPat">Apellido Paterno:</label>
-                                <input type="ApellidoPat" name="apellidoPat" value="{$resultado['apellidoPaterno']}" class="form-control" id="ApellidoPat" />
+                                <input type="text" name="apellidoPat" value="{$resultado['apellidoPaterno']}" class="form-control" id="ApellidoPat" />
                             </div>
                             <div class="form-group">
                                 <label for="ApellidoMat">Apellido Materno:</label>
-                                <input type="ApellidoMat" name="apellidoMat" value="{$resultado['apellidoMaterno']}" class="form-control" id="ApellidoMat" />
+                                <input type="text" name="apellidoMat" value="{$resultado['apellidoMaterno']}" class="form-control" id="ApellidoMat" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="Edad">Edad:</label>
-                            <input type="Edad" name="edad" value="{$resultado['edad']}" class="form-control" id="Edad" />
+                            <input type="number" name="edad" value="{$resultado['edad']}" class="form-control" id="Edad" />
                         </div>
 
                         <div class="form-group">
                             <label for="Usuario">Usuario:</label>
-                            <input type="Usuario" name="usuario" value="{$resultado['usuario']}" class="form-control" id="Usuario" />
+                            <input type="text" name="usuario" value="{$resultado['usuario']}" class="form-control" id="Usuario" />
+                        </div>
+                        <div class="form-group">
+                            <label for="admin">Es admin:</label>
+                            <input type="text" name="admin" value="{$admin}" class="form-control" id="admin" />
                         </div>
 
                         <button type="submit" name="editarInterno" class="btn btn-primary rounded mt-5">Submit</button>
@@ -106,7 +112,7 @@ EOT;
 window.location.href = "../Admin/AlumnoAdmin.php";
 </script>';
                         echo "Se imprimio esto";
-                    } 
+                    }
                     ?>
 
                 </div>

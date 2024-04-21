@@ -10,7 +10,8 @@
                         $apellidoMaterno = $_POST['apellidoMat'];
                         $usuario = $_POST['usuario'];
                         $edad = $_POST['edad'];
-                        if ($_FILES['imagen'] != "") {
+                        $color = $_POST['color'];
+                        if (isset($_FILES["imagen"]) && !empty($_FILES["imagen"]["name"])) {
                             $img_name = $_FILES['imagen']['name'];
                             $img_size = $_FILES['imagen']['size'];
                             $tmp_name = $_FILES['imagen']['tmp_name'];
@@ -34,9 +35,9 @@
                                         move_uploaded_file($tmp_name, $img_upload_path);
 
 
-                                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET  `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`=$edad,`usuario`='$usuario',`imagen`='$new_img_name'  WHERE  `codigo`=$codigo;");
-
-                                        echo '<script>alert("Registro Registro Insertado")</script>';
+                                        mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET  `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`=$edad,`colorFondo`='$color' ,`imagen`='$new_img_name'  WHERE  `codigo`=$codigo;") or die("error aqui|");
+                                        setcookie("colorFondo", $color, time() + 3600, "/");
+                                        echo '<script>alert("Registro Modificado")</script>';
                                         CloseCon($conn);
 
                                         echo '    <script type="text/javascript">
@@ -50,15 +51,22 @@
                                     }
                                 }
                             }
+                            echo '<script>alert("paso algo")</script>';
+                            CloseCon($conn);
+
+                            echo '    <script type="text/javascript">
+                            window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                            </script>';
                         } else {
 
-
-
-
-                            mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET  `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`apellidoMaterno`='$apellidoMaterno',`edad`=$edad,`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
+                            mysqli_query($conn, "UPDATE `minisiiau`.`usuario` SET  `nombre`='$nombre',`apellidoPaterno`='$apellidoPaterno',`colorFondo`='$color',`apellidoMaterno`='$apellidoMaterno',`edad`=$edad,`usuario`='$usuario'  WHERE  `codigo`=$codigo;") or
                                 die("Problemas en el select:" . mysqli_error($conn));
+                            setcookie("colorFondo", $color, time() + 3600, "/");
                             echo '<script>alert("Registro Modificado")</script>';
                             CloseCon($conn);
+                            echo '    <script type="text/javascript">
+                            window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                            </script>';
                         }
                     } else {
                         if (isset($_GET['accion']) && $_GET['accion'] == 'agregar' || ($_GET['nombre'] != '' && $_GET['password'] != '' && $_GET['usuario'] != '')) {
