@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
-    <script src="../build/js/bootstrap.min.js"></script>
-    <script src="../build/js/bootstrap.bundle.min.js"></script>
+    <script src="../../build/js/bootstrap.min.js"></script>
+    <script src="../../build/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
-    <link rel="stylesheet" href="../build/css/app.css" />
+    <link rel="stylesheet" href="../../build/css/app.css" />
 </head>
 
 <body class="d-flex flex-column min-vh-100 w-100">
@@ -50,7 +50,7 @@
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../Admin/OfertaAdmin.php?accion=listar";
+window.location.href = "../../Components/Admin/OfertaAdmin.php";
 </script>';
                     } else if (isset($_GET['accion']) && isset($_GET['codigo']) && $_GET['accion'] == 'editar') {
                         $accion = $_GET['accion'];
@@ -130,7 +130,7 @@ EOT;
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../normal/horarioNormal.php?accion=listar";
+window.location.href = "../../Components/normal/horarioNormal.php";
 </script>';
                     } else if (isset($_GET['accion']) && $_GET['accion'] == 'agregar') {
 
@@ -144,7 +144,7 @@ window.location.href = "../normal/horarioNormal.php?accion=listar";
                         CloseCon($conn);
 
                         echo '    <script type="text/javascript">
-window.location.href = "../normal/horarioNormal.php?accion=listar";
+window.location.href = "../../Components/normal/horarioNormal.php";
 </script>';
                     }
                     ?>

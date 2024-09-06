@@ -2,17 +2,21 @@
 if (!isset($_SESSION['username'])) {
     // La variable de sesión no está definida, así que la creamos
     session_start();
+    echo "entro aqui";
 }
 if (isset($_POST["enviar"])) {
     if (isset($_POST["usuario"]) && isset($_POST["password"]) && $_POST["usuario"]  != "" && $_POST["password"] != "") {
         include './mysqlConnect.php';
+        echo "entro aqui3";
         $conn = OpenCon();
         echo '<script>console.log("test")</script>';
         $loginNombre = $_POST["usuario"];
         $loginPassword = $_POST["password"];
         $registros = mysqli_query($conn, "SELECT * FROM usuario WHERE usuario='$loginNombre' AND password='$loginPassword' limit 1;");
+        var_dump($registros);
+        print_r($registros);
         if ($registros) {
-
+            echo "entro aqui4";
             while ($row = $registros->fetch_array()) {
 
                 $userok = $row["usuario"];
@@ -51,7 +55,7 @@ if (isset($_POST["enviar"])) {
             if ($esAdmin == 1) {
                 header("Location: ../Admin/AlumnoAdmin.php?accion=listar");
             } else {
-                header("Location: ../normal/Alumnonormal.php?accion=ver");
+                header("Location: ../normal/AlumnoNormal.php?accion=ver");
             }
         } else {
             echo '<script>alert("datos Erroneos, intenta de nuevo")</script>';
@@ -66,6 +70,4 @@ if (isset($_POST["enviar"])) {
         </script>';
     }
 }
-
-
-exit;
+?>

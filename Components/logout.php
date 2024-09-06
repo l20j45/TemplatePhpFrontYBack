@@ -6,5 +6,8 @@ setcookie("esAdmin", "", time() - 3600, "/");
 $_SESSION = array();
 session_unset();
 session_destroy();
-header("Location: ../index.html");
+echo '<script>alert("Saliendo del sistema")</script>';
+echo '    <script type="text/javascript">
+window.location.href = "../index.html";
+</script>';
 ?>

@@ -7,18 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
 
-  <script src="../build/js/bootstrap.min.js"></script>
-  <script src="../build/js/bootstrap.bundle.min.js"></script>
+  <script src="../../build/js/bootstrap.min.js"></script>
+  <script src="../../build/js/bootstrap.bundle.min.js"></script>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
-  <link rel="stylesheet" href="../build/css/app.css" />
+  <link rel="stylesheet" href="../../build/css/app.css" />
 </head>
 
 <body class="d-flex flex-column min-vh-100 w-100">
   <?php
   include '../phpLibrary/layout.php';
-  headerAdmin();
+  headerControllerAdmin();
   ?>
   <main class="flex-grow-1">
     <div class="container-lg">
@@ -66,7 +66,7 @@ EOT;
           } else {
           ?>
             <h2 class="mt-5">Registrar Materia</h2>
-            <form class="mt-5" action="../phpLibrary/materiaControllerAdmin.php?accion=agregar" method="post">
+            <form class="mt-5" action="../../phpLibrary/Controllers/materiaControllerAdmin.php?accion=agregar" method="post">
               <div class="form-group">
                 <label for="nombreMateria">Nombre de la materia:</label>
                 <input type="nombreMateria" name="nombreMateria" class="form-control" id="nombreMateria" />

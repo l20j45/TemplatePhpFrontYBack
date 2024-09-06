@@ -21,7 +21,7 @@
                                 if ($img_size > 12500000) {
                                     echo '<script>alert("Tu archivo es muy grande")</script>';
                                     echo '    <script type="text/javascript">
-                                window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                                window.location.href = "../../Components/normal/AlumnoNormal.php";
                                 </script>';
                                 } else {
                                     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -30,7 +30,7 @@
                                     $allowed_exs = array("jpg", "jpeg", "png");
 
                                     if (in_array($img_ex_lc, $allowed_exs)) {
-                                        $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                        $new_img_name = uniqid("IMG-", true) . 'phpLibrary' . $img_ex_lc;
                                         $img_upload_path = 'uploads/' . $new_img_name;
                                         move_uploaded_file($tmp_name, $img_upload_path);
 
@@ -41,12 +41,12 @@
                                         CloseCon($conn);
 
                                         echo '    <script type="text/javascript">
-                                window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                                window.location.href = "../../Components/normal/AlumnoNormal.php";
                                 </script>';
                                     } else {
                                         echo '<script>alert("solo se aceptan jpg, png y jpeg")</script>';
                                         echo '    <script type="text/javascript">
-                                    window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                                    window.location.href = "../../Components/normal/AlumnoNormal.php";
                                     </script>';
                                     }
                                 }
@@ -55,7 +55,7 @@
                             CloseCon($conn);
 
                             echo '    <script type="text/javascript">
-                            window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                            window.location.href = "../../Components/normal/AlumnoNormal.php";
                             </script>';
                         } else {
 
@@ -65,7 +65,7 @@
                             echo '<script>alert("Registro Modificado")</script>';
                             CloseCon($conn);
                             echo '    <script type="text/javascript">
-                            window.location.href = "../normal/AlumnoNormal.php?accion=ver";
+                            window.location.href = "../../Components/normal/AlumnoNormal.php";
                             </script>';
                         }
                     } else {
@@ -90,7 +90,7 @@
                                 if ($img_size > 12500000) {
                                     echo '<script>alert("Tu archivo es muy grande")</script>';
                                     echo '    <script type="text/javascript">
-                                    window.location.href = "../index.html";
+                                    window.location.href = "../../index.html";
                                     </script>';
                                 } else {
                                     $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
@@ -99,7 +99,7 @@
                                     $allowed_exs = array("jpg", "jpeg", "png");
 
                                     if (in_array($img_ex_lc, $allowed_exs)) {
-                                        $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
+                                        $new_img_name = uniqid("IMG-", true) . 'phpLibrary' . $img_ex_lc;
                                         $img_upload_path = 'uploads/' . $new_img_name;
                                         move_uploaded_file($tmp_name, $img_upload_path);
 
@@ -110,25 +110,25 @@
                                         CloseCon($conn);
 
                                         echo '    <script type="text/javascript">
-                                    window.location.href = "../index.html";
+                                    window.location.href = "../../index.html";
                                     </script>';
                                     } else {
                                         echo '<script>alert("solo se aceptan jpg, png y jpeg")</script>';
                                         echo '    <script type="text/javascript">
-                                        window.location.href = "../index.html";
+                                        window.location.href = "../../index.html";
                                         </script>';
                                     }
                                 }
                             } else {
                                 echo '<script>alert("error raro")</script>';
                                 echo '    <script type="text/javascript">
-                                window.location.href = "../index.html";
+                                window.location.href = "../../index.html";
                                 </script>';
                             }
                         } else {
                             echo '<script>alert("Datos Insuficientes")</script>';
                             echo '    <script type="text/javascript">
-                            window.location.href = "../index.html";
+                            window.location.href = "../../index.html";
                             </script>';
                         }
                     }

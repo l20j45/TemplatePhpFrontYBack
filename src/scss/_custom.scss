@@ -2,10 +2,10 @@
 $negro: #262626;
 $blanco: #FFF;
 $naranja: #FFF;
-$colorUdg: #506788;
+
 
 //colores
-$primary:$colorUdg;
+$primary:$naranja;
 $white: $blanco;
 $dark: $negro;
 
@@ -15,8 +15,8 @@ $dark: $negro;
 // $fuente-textos: 'Roboto',
 // sans-serif;
 
-// $headings-font-family: $fuente-headings;
-// $font-family-base: $fuente-textos;
+$headings-font-family: $fuente-headings;
+$font-family-base: $fuente-textos;
 $headings-font-weight: 900;
 
 $h1-font-size:4.4rem;
@@ -35,7 +35,7 @@ $btn-border-radius:0;
 
 //nav
 
-$link-color: $negro;
+$link-color: $white;
 $link-decoration: none;
 $link-hover-color:$white;
 

@@ -146,7 +146,7 @@ function headerControllerAdmin()
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="../Admin/AlumnoAdmin.php?accion=listar">Ver</a></li>
+                  <li><a class="dropdown-item" href="../../Components/Admin/AlumnoAdmin.php?accion=listar">Ver</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
@@ -164,9 +164,9 @@ function headerControllerAdmin()
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="../Admin/ProfesorAdmin.php?accion=listar">Ver</a></li>
+                  <li><a class="dropdown-item" href="../../Components/Admin/ProfesorAdmin.php?accion=listar">Ver</a></li>
                   <li>
-                    <a class="dropdown-item" href="../Admin/ProfesorAdmin.php">Agregar</a>
+                    <a class="dropdown-item" href="../../Components/Admin/ProfesorAdmin.php">Agregar</a>
                   </li>
                 </ul>
               </li>
@@ -185,9 +185,9 @@ function headerControllerAdmin()
                   class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
-                  <li><a class="dropdown-item" href="../Admin/MateriaAdmin.php?accion=listar">Ver</a></li>
+                  <li><a class="dropdown-item" href="../../Components/Admin/MateriaAdmin.php?accion=listar">Ver</a></li>
                   <li>
-                    <a class="dropdown-item" href="../Admin/MateriaAdmin.php">Agregar</a>
+                    <a class="dropdown-item" href="../../Components/Admin/MateriaAdmin.php">Agregar</a>
                   </li>
 
                 </ul>
@@ -207,16 +207,16 @@ function headerControllerAdmin()
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <li><a class="dropdown-item" href="../Admin/OfertaAdmin.php?accion=listar">Ver</a></li>
+                <li><a class="dropdown-item" href="../../Components/Admin/OfertaAdmin.php?accion=listar">Ver</a></li>
                 <li>
-                  <a class="dropdown-item" href="../Admin/OfertaAdmin.php">Agregar</a>
+                  <a class="dropdown-item" href="../../Components/Admin/OfertaAdmin.php">Agregar</a>
                 </li>
 
               </ul>
             </li>
               
             </ul>
-            <a href="../phpLibrary/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
+            <a href="../../Components/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
           </div>
         </div>
       </nav>
@@ -262,7 +262,7 @@ function headerControllerNormal()
               </ul>
             </li>
           </ul>
-          <a href="../phpLibrary/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
+          <a href="../../Components/logout.php" class="text white ms-3 btn btn-primary">Cerrar sesion</a>
         </div>
       </div>
     </nav>
